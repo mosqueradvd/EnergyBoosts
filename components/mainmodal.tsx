@@ -56,7 +56,7 @@ function ProductAddToCart() {
     }, selectedTime * 60 * 1000);
 
     return () => clearInterval(intervalId);
-  }, [selectedTime, images.length]);
+  }, [selectedTime, images.length, currentImageIndex]);
 
   React.useEffect(() => {
     getAllMedia();
@@ -66,11 +66,11 @@ function ProductAddToCart() {
     <Flex
       p={50}
       w="full"
-      alignItems="center"
+      alignItems={"center"}
       justifyContent="center"
       direction="column"
     >
-      <Flex p={50} w="full" alignItems="center" justifyContent="center">
+      <Flex p={50} w="full" alignItems={"center"} justifyContent="center">
         <Box>
           <Select
             value={selectedTime}
