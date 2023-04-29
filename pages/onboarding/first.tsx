@@ -13,7 +13,6 @@ import {
   IconProps,
   useColorModeValue,
   Link,
-  ExternalLinkIcon,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
 
@@ -56,17 +55,17 @@ export default function CallToActionWithVideo() {
             spacing={{ base: 4, sm: 6 }}
             direction={{ base: "column", sm: "row" }}
           >
-            {/* <Button
+            <Button
               rounded={"full"}
               size={"lg"}
               fontWeight={"normal"}
               px={6}
               leftIcon={<PlayIcon h={4} w={4} color={"gray.300"} />}
-            > */}
-            <Link as={NextLink} href="/onboarding/second">
-              Next
-            </Link>
-            {/* </Button> */}
+            >
+              <Link as={NextLink} href="/onboarding/second">
+                Next
+              </Link>
+            </Button>
           </Stack>
         </Stack>
         <Flex

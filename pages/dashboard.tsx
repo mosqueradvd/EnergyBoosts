@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Grid,
   GridItem,
@@ -19,6 +19,15 @@ import CardFourth from "../components/cardfourth";
 import Footer from "../components/footer";
 
 export default function App() {
+  React.useEffect(() => {
+    const accessTok = localStorage.getItem("access_tok");
+
+    console.log("access", accessTok);
+    if (accessTok != null) return;
+
+    location.href = "auth/log";
+  }, []);
+
   return (
     <Grid
       gridTemplateColumns={{
