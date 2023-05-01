@@ -1,5 +1,6 @@
 import * as React from "react";
 import {
+  chakra,
   FormControl,
   FormLabel,
   Input,
@@ -157,6 +158,17 @@ const LogIn = () => {
               >
                 Log in with Google
               </Button>
+              <chakra.h1 color="black" fontSize="1xl" lineHeight={1.2}>
+                Don't have an account?
+                <Link
+                  color={"purple.400"}
+                  marginLeft={"5px"}
+                  fontSize={{ base: "md", sm: "md" }}
+                  href="/auth/sign"
+                >
+                  Sign up
+                </Link>
+              </chakra.h1>
             </VStack>
           </VStack>
         </Stack>

@@ -1,5 +1,6 @@
 import * as React from "react";
 import {
+  chakra,
   FormControl,
   FormLabel,
   Input,
@@ -159,6 +160,17 @@ const SplitWithImage = () => {
               >
                 Sign up with Google
               </Button>
+              <chakra.h1 color="black" fontSize="1xl" lineHeight={1.2}>
+                Have an account?
+                <Link
+                  color={"purple.400"}
+                  marginLeft={"5px"}
+                  fontSize={{ base: "md", sm: "md" }}
+                  href="/auth/log"
+                >
+                  Log in
+                </Link>
+              </chakra.h1>
             </VStack>
           </VStack>
         </Stack>

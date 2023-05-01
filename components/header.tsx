@@ -22,9 +22,17 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from "@chakra-ui/icons";
+import AvatarWithRipple from "./profile";
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
+
+  const logOut = () => {
+    localStorage.removeItem("access_tok");
+    setTimeout(() => {
+      location.href = "/auth/log";
+    }, 200);
+  };
 
   return (
     <Box>
@@ -71,15 +79,7 @@ export default function WithSubnavigation() {
           direction={"row"}
           spacing={6}
         >
-          <Button
-            as={"a"}
-            fontSize={"sm"}
-            fontWeight={400}
-            variant={"link"}
-            href={"#"}
-          >
-            Sign In
-          </Button>
+          <AvatarWithRipple />
           <Button
             as={"a"}
             display={{ base: "none", md: "inline-flex" }}
@@ -91,8 +91,9 @@ export default function WithSubnavigation() {
             _hover={{
               bg: "purple.500",
             }}
+            onClick={logOut}
           >
-            Sign Up
+            Log out
           </Button>
         </Stack>
       </Flex>

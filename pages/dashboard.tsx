@@ -10,23 +10,27 @@ import {
 } from "@chakra-ui/react";
 import NextLink from "next/link";
 import Header from "../components/header";
-import Entries from "../components/entries";
 import EX from "../components/mainmodal";
 import CardOne from "../components/cardone";
 import CardTwo from "../components/cardtwo";
 import CardThree from "../components/cardthree";
 import CardFourth from "../components/cardfourth";
 import Footer from "../components/footer";
+import { ModalManager } from "../components/modalmanager";
+import AnotherModal from "../components/anothermodal";
+import Picker from "../components/picker";
+import Modal from "../components/modal";
 
 export default function App() {
+  const [tok, setTok] = React.useState("");
   React.useEffect(() => {
-    const accessTok = localStorage.getItem("access_tok");
+    const accessTok: any = localStorage.getItem("access_tok");
+    setTok(accessTok);
 
-    console.log("access", accessTok);
     if (accessTok != null) return;
 
     location.href = "auth/log";
-  }, []);
+  }, [tok]);
 
   return (
     <Grid
@@ -60,7 +64,9 @@ export default function App() {
         <CardFourth />
       </Box>
       <Box gridArea="map">
-        <EX />
+        {/* <EX /> */}
+        <Picker />
+        <Modal />
       </Box>
       <Box gridArea="footer" bg="gray.500">
         <Footer />

@@ -14,6 +14,7 @@ import {
 
 import { ref, listAll, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase/config";
+
 const listRef = ref(storage, "exercises/");
 
 const data = {
@@ -28,7 +29,7 @@ const data = {
 
 function ProductAddToCart() {
   const [images, setImages] = React.useState([]);
-  const [selectedTime, setSelectedTime] = React.useState("0.5");
+  const [selectedTime, setSelectedTime]: any = React.useState("0.5");
   const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
 
   const handleTimeChange = (event: any) => {
@@ -58,6 +59,9 @@ function ProductAddToCart() {
     return () => clearInterval(intervalId);
   }, [selectedTime, images.length, currentImageIndex]);
 
+  console.log("currentImageIndex", currentImageIndex);
+  console.log("selectedTime", selectedTime);
+
   React.useEffect(() => {
     getAllMedia();
   }, []);
@@ -83,8 +87,8 @@ function ProductAddToCart() {
             <option value="0.00083333">3 seconds</option>
             <option value="0.25">15 minutes</option>
             <option value="0.5">30 minutes</option>
+            <option value="0.66666667">40 minutes</option>
             <option value="1">1 hour</option>
-            <option value="2">2 hours</option>
           </Select>
         </Box>
       </Flex>

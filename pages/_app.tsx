@@ -1,11 +1,14 @@
 // pages/_app.js
 import { ChakraProvider } from "@chakra-ui/react";
+import { AppContextProvider } from "./ctx";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: any) {
   return (
-    <ChakraProvider>
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <AppContextProvider>
+      <ChakraProvider>
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </AppContextProvider>
   );
 }
 
