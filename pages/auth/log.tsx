@@ -159,7 +159,7 @@ const LogIn = () => {
                 Log in with Google
               </Button>
               <chakra.h1 color="black" fontSize="1xl" lineHeight={1.2}>
-                Don't have an account?
+                Don&apos;t have an account?
                 <Link
                   color={"purple.400"}
                   marginLeft={"5px"}
