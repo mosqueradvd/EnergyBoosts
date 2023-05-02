@@ -95,7 +95,7 @@ function ProductAddToCart() {
   const getAllMedia = () => {
     listAll(listRef)
       .then((res) => {
-        const promises = res.items.map((itemRef) => {
+        const promises = res.items.map((itemRef: any) => {
           return getDownloadURL(ref(storage, itemRef));
         });
         Promise.all(promises).then((urls) => {
