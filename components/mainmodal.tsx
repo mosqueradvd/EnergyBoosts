@@ -98,7 +98,7 @@ function ProductAddToCart() {
         const promises = res.items.map((itemRef: any) => {
           return getDownloadURL(ref(storage, itemRef));
         });
-        Promise.all(promises).then((urls) => {
+        Promise.all(promises).then((urls: any) => {
           setImages(urls);
         });
       })
