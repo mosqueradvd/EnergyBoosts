@@ -13,8 +13,6 @@ import {
   IconProps,
   useColorModeValue,
   Link,
-  ExternalLinkIcon,
-  
 } from "@chakra-ui/react";
 import NextLink from "next/link";
 
