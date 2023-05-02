@@ -21,7 +21,7 @@ import {
 
 import { ref, listAll, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase/config";
-import AppContext from "../pages/ctx";
+import AppContext from "../ctx";
 
 const MIN_TIME = 7000; // 40 minutes ""
 // const CLOSING_TIME = 5000;

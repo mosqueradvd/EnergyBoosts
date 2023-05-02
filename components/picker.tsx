@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import AppContext from "../pages/ctx";
+import AppContext from "../ctx";
 import { Select } from "@chakra-ui/react";
 
 const Picker = () => {
