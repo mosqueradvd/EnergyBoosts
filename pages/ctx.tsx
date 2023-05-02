@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 const AppContext = createContext();
 
 export const AppContextProvider = ({ children }: any) => {
-  const [minutes, setMinutes] = useState(40);
+  const [minutes, setMinutes] = useState(0);
 
   const value = {
     minutes,

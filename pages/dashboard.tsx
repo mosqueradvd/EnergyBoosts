@@ -16,10 +16,7 @@ import CardTwo from "../components/cardtwo";
 import CardThree from "../components/cardthree";
 import CardFourth from "../components/cardfourth";
 import Footer from "../components/footer";
-import { ModalManager } from "../components/modalmanager";
-import AnotherModal from "../components/anothermodal";
 import Picker from "../components/picker";
-import Modal from "../components/modal";
 
 export default function App() {
   const [tok, setTok] = React.useState("");
@@ -64,9 +61,8 @@ export default function App() {
         <CardFourth />
       </Box>
       <Box gridArea="map">
-        {/* <EX /> */}
         <Picker />
-        <Modal />
+        <EX />
       </Box>
       <Box gridArea="footer" bg="gray.500">
         <Footer />
