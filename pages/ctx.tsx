@@ -1,11 +1,11 @@
 import { createContext, useState } from "react";
 
-const AppContext = createContext();
+const AppContext = createContext(0);
 
 export const AppContextProvider = ({ children }: any) => {
-  const [minutes, setMinutes] = useState(0);
+  const [minutes, setMinutes]: any = useState(0);
 
-  const value = {
+  const value: any = {
     minutes,
     setMinutes,
   };
