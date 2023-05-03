@@ -34,13 +34,18 @@ const LogIn = () => {
   const handleLogin = async () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        // ...
+        const credential: any = userCredential.user;
+
+        localStorage.setItem("access_tok", credential.accessToken);
+
+        setTimeout(() => {
+          location.href = "/dashboard";
+        }, 100);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.log("An", errorCode, "error has occurred :", errorMessage);
       });
   };
 
