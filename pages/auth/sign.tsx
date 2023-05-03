@@ -15,7 +15,6 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { auth } from "../../firebase/config";
-// import { firebase } from "firebase/app";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
@@ -23,7 +22,6 @@ import {
 } from "firebase/auth";
 
 const provider = new GoogleAuthProvider();
-// firebase.auth().useDeviceLanguage();
 
 provider.setCustomParameters({
   login_hint: "user@example.com",
@@ -34,45 +32,38 @@ const SplitWithImage = () => {
   const [password, setPassword] = React.useState("");
 
   const handleRegister = async () => {
-    console.log("EMAIL", email, password);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
-        const user = userCredential;
-        // ...
-        console.log("success", user);
+        const user: any = userCredential;
+        const token = user.accessToken;
+        localStorage.setItem("access_tok", token);
 
-        // setTimeout(() => {
-        //   location.href = "/onboarding/first";
-        // }, 100);
+        setTimeout(() => {
+          location.href = "/onboarding/first";
+        }, 100);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // ..
+        console.error("SignInWGoogleErr", errorCode, errorMessage);
       });
   };
 
   const signUpWGoogle = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
         const credential: any = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
-        // The signed-in user info.
         const user = result.user;
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
+        localStorage.setItem("access_tok", token);
+        setTimeout(() => {
+          location.href = "/onboarding/first";
+        }, 100);
       })
       .catch((error) => {
-        // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
+        console.error("SignUpWGoogleErr", errorCode, errorMessage);
       });
   };
 
