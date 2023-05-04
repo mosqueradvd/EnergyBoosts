@@ -23,8 +23,8 @@ import { ref, listAll, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase/config";
 import AppContext from "../ctx";
 
-const MIN_TIME = 7000; // 40 minutes ""
-// const CLOSING_TIME = 5000;
+const MIN_TIME = 40 * 60 * 1000; // 40 minutes default
+const CLOSING_TIME = 5 * 60 * 1000;
 
 const listRef = ref(storage, "exercises/");
 
@@ -34,7 +34,7 @@ function ProductAddToCart() {
   const { minutes }: any = React.useContext(AppContext);
   const [currentImg, setCurrentImg]: any = React.useState([]);
 
-  // const handleClose = () => setShowModal(!showModal);
+  const handleClose = () => setShowModal(!showModal);
 
   React.useEffect(() => {
     const interval = setInterval(
@@ -54,7 +54,7 @@ function ProductAddToCart() {
     if (showModal) {
       timeoutId = setTimeout(() => {
         setShowModal(false);
-      }, 7000);
+      }, CLOSING_TIME);
     }
 
     return () => {
@@ -123,16 +123,15 @@ function ProductAddToCart() {
     //   "https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=4600&q=80",
     name: `Do this exercise for 5 minutes`,
   };
+
   const { onClose } = useDisclosure();
 
   return (
     <>
       {showModal && (
         <>
-          {/* <Button onClick={onOpen}>Open Modal</Button> */}
-
           <Modal
-            closeOnOverlayClick={false}
+            closeOnOverlayClick={true}
             isOpen={showModal}
             onClose={onClose}
           >
@@ -152,7 +151,7 @@ function ProductAddToCart() {
                   )}
                 </Box>
               </ModalHeader>
-              <ModalCloseButton />
+              <ModalCloseButton onClick={handleClose} />
               <ModalBody pb={6}>
                 <Flex
                   p={50}
@@ -161,15 +160,6 @@ function ProductAddToCart() {
                   justifyContent="center"
                   direction="column"
                 >
-                  {/* <Box
-                    bg={useColorModeValue("white", "gray.800")}
-                    maxW="sm"
-                    borderWidth="1px"
-                    rounded="lg"
-                    shadow="lg"
-                    position="relative"
-                  > */}
-
                   <Image
                     src={currentImg}
                     alt={`Picture of ${data.name}`}
@@ -177,18 +167,6 @@ function ProductAddToCart() {
                   />
 
                   <Box p="6">
-                    {/* <Box display="flex" alignItems="baseline">
-                      {data.isNew && (
-                        <Badge
-                          rounded="full"
-                          px="2"
-                          fontSize="0.8em"
-                          colorScheme="green"
-                        >
-                          Time to Rest
-                        </Badge>
-                      )}
-                    </Box> */}
                     <Flex
                       mt="1"
                       justifyContent="space-between"
@@ -223,17 +201,9 @@ function ProductAddToCart() {
                       </Box>
                     </Flex>
                   </Box>
-                  {/* <button onClick={() => handleClose()}>Cerrar</button> */}
-                  {/* </Box> */}
                 </Flex>
               </ModalBody>
-
-              <ModalFooter>
-                {/* <Button colorScheme="blue" mr={3}>
-                  Save
-                </Button> */}
-                <Button onClick={onClose}>Close</Button>
-              </ModalFooter>
+              <ModalFooter></ModalFooter>
             </ModalContent>
           </Modal>
         </>

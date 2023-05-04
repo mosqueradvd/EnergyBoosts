@@ -54,8 +54,12 @@ const SplitWithImage = () => {
       .then((result) => {
         const credential: any = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
-        const user = result.user;
+        const user: any = result.user;
+
+        localStorage.setItem("username", user.displayName);
+
         localStorage.setItem("access_tok", token);
+
         setTimeout(() => {
           location.href = "/onboarding/first";
         }, 100);

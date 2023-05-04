@@ -36,7 +36,10 @@ const LogIn = () => {
       .then((userCredential) => {
         const credential: any = userCredential.user;
 
+        console.log("credential", credential);
+
         localStorage.setItem("access_tok", credential.accessToken);
+        localStorage.setItem("username", credential.email);
 
         setTimeout(() => {
           location.href = "/dashboard";
@@ -56,6 +59,7 @@ const LogIn = () => {
         const token = credential.accessToken;
         const user = result.user;
 
+        localStorage.setItem("username", user.displayName);
         localStorage.setItem("access_tok", token);
 
         setTimeout(() => {
