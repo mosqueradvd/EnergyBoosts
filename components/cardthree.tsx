@@ -10,7 +10,7 @@ import {
 
 const Index = () => {
   return (
-    <Container maxW="5xl" p={{ base: 5, md: 10 }}>
+    <Container maxW="5xl" p={{ base: 5, md: 3 }}>
       <Box
         pos="relative"
         boxShadow={useColorModeValue(
@@ -37,13 +37,7 @@ const Index = () => {
             </clipPath>
           </defs>
         </svg>
-        <Stack
-          pos="relative"
-          zIndex={1}
-          direction="column"
-          spacing={5}
-          textAlign="left"
-        >
+        <Stack pos="relative" zIndex={1} direction="column" textAlign="left">
           <chakra.h1
             color="white"
             fontSize="4xl"

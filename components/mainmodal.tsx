@@ -23,8 +23,8 @@ import { ref, listAll, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase/config";
 import AppContext from "../ctx";
 
-const MIN_TIME = 40 * 60 * 1000; // 40 minutes default
-const CLOSING_TIME = 5 * 60 * 1000;
+// const MIN_TIME = 40 * 60 * 1000; // 40 minutes default
+// const CLOSING_TIME = 5 * 60 * 1000;
 
 const listRef = ref(storage, "exercises/");
 
@@ -36,61 +36,31 @@ function ProductAddToCart() {
 
   const handleClose = () => setShowModal(!showModal);
 
-  React.useEffect(() => {
-    const interval = setInterval(
-      () => {
-        setShowModal(true);
-      },
-      minutes > 0 ? minutes : MIN_TIME
-    );
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, [minutes]);
-
-  React.useEffect(() => {
-    let timeoutId: any;
-    if (showModal) {
-      timeoutId = setTimeout(() => {
-        setShowModal(false);
-      }, CLOSING_TIME);
-    }
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [showModal]);
-
-  // const modalOpening = () => {
-  //   setShowModal(true);
-  //   setTimeout(() => {
-  //     setShowModal(false);
-  //   }, 50);
-  // }
-
   // React.useEffect(() => {
-  //   const modalOpening = setTimeout(
+  //   const interval = setInterval(
   //     () => {
-  //       console.log("abriendo modal...");
   //       setShowModal(true);
   //     },
   //     minutes > 0 ? minutes : MIN_TIME
   //   );
 
-  // showModal && clearTimeout(modalOpening);
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, [minutes]);
 
-  // setTimeout(() => {
-  //   console.log("cerrar");
-  //   clearTimeout(modalOpening);
-  //   setShowModal(false);
-  // }, 5000);
+  // React.useEffect(() => {
+  //   let timeoutId: any;
+  //   if (showModal) {
+  //     timeoutId = setTimeout(() => {
+  //       setShowModal(false);
+  //     }, CLOSING_TIME);
+  //   }
 
-  // setTimeout(() => {
-  //   console.log("cerrando... modal");
-  //   handleClose();
-  // }, CLOSING_TIME);
-  // }, []);
+  //   return () => {
+  //     clearTimeout(timeoutId);
+  //   };
+  // }, [showModal]);
 
   const getAllMedia = () => {
     listAll(listRef)
@@ -119,8 +89,6 @@ function ProductAddToCart() {
 
   const data = {
     isNew: true,
-    // imageURL:
-    //   "https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=4600&q=80",
     name: `Do this exercise for 5 minutes`,
   };
 
@@ -130,7 +98,7 @@ function ProductAddToCart() {
     <>
       {showModal && (
         <>
-          <Modal
+          {/* <Modal
             closeOnOverlayClick={true}
             isOpen={showModal}
             onClose={onClose}
@@ -152,60 +120,52 @@ function ProductAddToCart() {
                 </Box>
               </ModalHeader>
               <ModalCloseButton onClick={handleClose} />
-              <ModalBody pb={6}>
-                <Flex
-                  p={50}
-                  w="full"
-                  alignItems={"center"}
-                  justifyContent="center"
-                  direction="column"
+              <ModalBody pb={6}> */}
+          <Flex
+            p={50}
+            w="full"
+            alignItems={"center"}
+            justifyContent="center"
+            direction="column"
+          >
+            <Image src={currentImg} alt="Do Exercise" roundedTop="lg" />
+
+            <Box>
+              <Flex mt="1" justifyContent="space-between" alignContent="center">
+                <Box
+                  fontSize="2xl"
+                  fontWeight="semibold"
+                  as="h4"
+                  lineHeight="tight"
+                  isTruncated
                 >
-                  <Image
-                    src={currentImg}
-                    alt={`Picture of ${data.name}`}
-                    roundedTop="lg"
-                  />
+                  {data.name}
+                </Box>
+                <Tooltip
+                  label="Add to cart"
+                  bg="white"
+                  placement={"top"}
+                  color={"gray.800"}
+                  fontSize={"1.2em"}
+                >
+                  <chakra.a href={"#"} display={"flex"}></chakra.a>
+                </Tooltip>
+              </Flex>
 
-                  <Box p="6">
-                    <Flex
-                      mt="1"
-                      justifyContent="space-between"
-                      alignContent="center"
-                    >
-                      <Box
-                        fontSize="2xl"
-                        fontWeight="semibold"
-                        as="h4"
-                        lineHeight="tight"
-                        isTruncated
-                      >
-                        {data.name}
-                      </Box>
-                      <Tooltip
-                        label="Add to cart"
-                        bg="white"
-                        placement={"top"}
-                        color={"gray.800"}
-                        fontSize={"1.2em"}
-                      >
-                        <chakra.a href={"#"} display={"flex"}></chakra.a>
-                      </Tooltip>
-                    </Flex>
-
-                    <Flex justifyContent="space-between" alignContent="center">
-                      <Box
-                        fontSize="2xl"
-                        color={useColorModeValue("gray.800", "white")}
-                      >
-                        <Box as="span" color={"gray.600"} fontSize="lg"></Box>
-                      </Box>
-                    </Flex>
-                  </Box>
-                </Flex>
-              </ModalBody>
+              <Flex justifyContent="space-between" alignContent="center">
+                <Box
+                  fontSize="2xl"
+                  color={useColorModeValue("gray.800", "white")}
+                >
+                  <Box as="span" color={"gray.600"} fontSize="lg"></Box>
+                </Box>
+              </Flex>
+            </Box>
+          </Flex>
+          {/* </ModalBody>
               <ModalFooter></ModalFooter>
             </ModalContent>
-          </Modal>
+          </Modal> */}
         </>
       )}
     </>

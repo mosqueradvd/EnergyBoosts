@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Flex,
-  Text,
-  IconButton,
-  Divider,
-  Avatar,
-  Heading,
-} from "@chakra-ui/react";
+import { Flex, IconButton, Divider, Heading } from "@chakra-ui/react";
 import {
   FiMenu,
   FiHome,
@@ -18,6 +11,7 @@ import {
 } from "react-icons/fi";
 import { IoPawOutline } from "react-icons/io5";
 import NavItem from "./NavItem";
+import LogOut from "../logout";
 
 export default function Sidebar() {
   const [navSize, changeNavSize] = useState("large");
@@ -56,14 +50,23 @@ export default function Sidebar() {
           navSize={navSize}
           icon={FiHome}
           title="Dashboard"
+          active
           description="This is the description for the dashboard."
         />
-        <NavItem navSize={navSize} icon={FiCalendar} title="Calendar" active />
-        <NavItem navSize={navSize} icon={FiUser} title="Clients" />
-        <NavItem navSize={navSize} icon={IoPawOutline} title="Animals" />
-        <NavItem navSize={navSize} icon={FiDollarSign} title="Stocks" />
-        <NavItem navSize={navSize} icon={FiBriefcase} title="Reports" />
-        <NavItem navSize={navSize} icon={FiSettings} title="Settings" />
+        <NavItem
+          navSize={navSize}
+          icon={FiCalendar}
+          title="Your thoughts"
+          description="Coming soon"
+        />
+        <NavItem
+          navSize={navSize}
+          icon={FiUser}
+          title="Discover"
+          description="Coming soon"
+        />
+        {/* <NavItem navSize={navSize} icon={IoPawOutline} title="Animals" />
+        <NavItem navSize={navSize} icon={FiDollarSign} title="Stocks" /> */}
       </Flex>
 
       <Flex
@@ -75,16 +78,16 @@ export default function Sidebar() {
       >
         <Divider display={navSize == "small" ? "none" : "flex"} />
         <Flex mt={4} align="center">
-          <Avatar size="sm" src="avatar-1.jpg" />
+          {/* <Avatar size="sm" src="avatar-1.jpg" /> */}
+          <LogOut />
           <Flex
             flexDir="column"
             ml={4}
             display={navSize == "small" ? "none" : "flex"}
           >
             <Heading as="h3" size="sm">
-              Sylwia Weller
+              Logout
             </Heading>
-            <Text color="gray">Admin</Text>
           </Flex>
         </Flex>
       </Flex>

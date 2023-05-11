@@ -6,7 +6,6 @@ import {
   HStack,
   Heading,
   Container,
-  Icon,
   Text,
   IconButton,
   useDisclosure,
@@ -16,8 +15,7 @@ import {
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 import { AiOutlineClose } from "react-icons/ai";
 import AvatarWithRipple from "./profile";
-
-const GITHUB_REPO_LINK = "https://github.com/MA-Ahmad/templateskart";
+import Picker from "./picker";
 
 export default function TopNav() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -62,13 +60,22 @@ export default function TopNav() {
                   fontSize={["lg", "md", "xl", "3xl"]}
                   cursor="pointer"
                 >
-                  <Flex position="relative">
-                    <HStack display={{ base: "none", sm: "flex" }} spacing={2}>
-                      <Text color={"black"}>Skipping</Text>
+                  <Flex
+                    position="relative"
+                    justifyContent={"left"}
+                    textAlign={"left"}
+                  >
+                    <HStack>
+                      <Text color={"black"}>Do Exercise. Live better.</Text>
                     </HStack>
                   </Flex>
                 </Heading>
               </Link>
+            </HStack>
+            <HStack spacing={2} alignItems="center">
+              <Flex alignItems={"center"}>
+                <Picker />
+              </Flex>
             </HStack>
             <HStack spacing={2} alignItems="center">
               <Flex alignItems={"center"}>

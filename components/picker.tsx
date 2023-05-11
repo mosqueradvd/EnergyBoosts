@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import AppContext from "../ctx";
 import { Select } from "@chakra-ui/react";
 
-const ONE_MIN = 5 * 60 * 1000;
+const ONE_MIN = 60 * 1000;
 const FIVE_MINS = 5 * 60 * 1000;
 const TEN_MINS = 10 * 60 * 1000;
 const FIFTH_MINS = 15 * 60 * 1000;
@@ -23,8 +23,9 @@ const Picker = () => {
     <div>
       {/* <label htmlFor="minutes">Minutes:</label> */}
       <Select
+        color={"black"}
         cursor={"pointer"}
-        placeholder="Select your time"
+        placeholder="Select frecuency time"
         id="minutes"
         value={minutes}
         onChange={handleChange}

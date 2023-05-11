@@ -27,13 +27,6 @@ import AvatarWithRipple from "./profile";
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
 
-  const logOut = () => {
-    localStorage.removeItem("access_tok");
-    setTimeout(() => {
-      location.href = "/auth/log";
-    }, 200);
-  };
-
   return (
     <Box>
       <Flex
@@ -80,7 +73,7 @@ export default function WithSubnavigation() {
           spacing={6}
         >
           <AvatarWithRipple />
-          <Button
+          {/* <Button
             as={"a"}
             display={{ base: "none", md: "inline-flex" }}
             fontSize={"sm"}
@@ -94,7 +87,7 @@ export default function WithSubnavigation() {
             onClick={logOut}
           >
             Log out
-          </Button>
+          </Button> */}
         </Stack>
       </Flex>
 

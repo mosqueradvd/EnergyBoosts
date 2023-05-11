@@ -10,7 +10,7 @@ import {
 
 const Index = () => {
   return (
-    <Container maxW="5xl" p={{ base: 5, md: 10 }}>
+    <Container maxW="5xl" p={{ base: 5, md: 3 }}>
       <Box
         pos="relative"
         boxShadow={useColorModeValue(

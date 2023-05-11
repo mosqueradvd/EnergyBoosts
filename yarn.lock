@@ -3376,6 +3376,11 @@ react-style-singleton@^2.2.1:
     invariant "^2.2.4"
     tslib "^2.0.0"
 
+react-window-opener@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/react-window-opener/-/react-window-opener-0.0.7.tgz#99f64e2737f2835dad191d8cdcb8c3fd99a43610"
+  integrity sha512-N1OhhZE65g2aXxTH5heYXLJiV5POj+qsrukB/M1LS0LNlwzaGKCvFJaPGIKdalCjrWMrYqDjAcojBPHtyA7wrA==
+
 react@18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"

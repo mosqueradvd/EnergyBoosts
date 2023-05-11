@@ -40,17 +40,17 @@ export default function Exercise() {
       <Box
         borderRadius={"10"}
         height={"100%"}
-        pb={6}
         boxShadow={useColorModeValue(
           "0 4px 6px rgba(160, 174, 192, 0.6)",
           "0 4px 6px rgba(9, 17, 28, 0.9)"
         )}
       >
         <Image
-          src={currentImg}
+          borderRadius={"10"}
+          // src={currentImg}
+          src="https://i.pinimg.com/564x/b0/4e/ef/b04eefb85693cab7a13a51bb5b593c18.jpg"
           alt="Picture of exercise"
-          roundedTop="lg"
-          h="full"
+          height="full"
           fit={"contain"}
         />
       </Box>
